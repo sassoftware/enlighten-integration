@@ -1,5 +1,4 @@
 enlighten-integration
-
 ========================
 
 Example code and materials that illustrate techniques for integrating SAS with
