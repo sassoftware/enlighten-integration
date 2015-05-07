@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><_ROOT_ EMVERSION="13.2" ORIENTATION="HORIZONTAL">
+<Workspace>
+<NODES>
+<NODE CLASS="SASHELP.EMCORE.EMCODETOOL.CLASS" COMPONENT="SASCode" ID="EMCODE" X="276" Y="66" DESCRIPTION="Import PMML Model" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODEL" TOOLPREFIX="EMCODE">
+<PROPERTIES UsePriors="Y" ToolType="MODEL" DataNeeded="N" PublishCode="PUBLISH" ScoreCodeFormat="DATASTEP" MetaAdvisor="BASIC" ForceRun="Y" RunAction="Train" Component="SASCode">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes>
+<DELTA Variable="petallen" AttributeName="REPORT" AttributeValue="Y"/>
+</EmVariableAttributes>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data><![CDATA[
+*** Set Git repo dir;
+%let git_dir= ;
+ 
+*** Generate score code from PMML;
+*** Use required EM naming conventions;
+proc pscore
+	pmml file= &quot;&amp;git_dir.&amp;EM_DSEP.emRPMML.xml&quot;
+	ds file= &quot;%sysfunc(pathname(WORK))\temp_score.sas&quot;;
+	replace 'Probability_setosa' with 'P_SpeciesSetosa';
+	replace 'Probability_versicolor' with 'P_SpeciesVersicolor';
+	replace 'Probability_virginica' with 'P_SpeciesVirginica';
+run;
+ 
+*** Copy to node score code files;
+filename _scrcd &quot;%sysfunc(pathname(WORK))\temp_score.sas&quot;;
+filename _out &quot;&amp;EM_FILE_EMFLOWSCORECODE&quot;;
+%EM_COPYFILE(infref=_scrcd, outfref=_out);
+filename _out;
+filename _out &quot;&amp;EM_FILE_EMPUBLISHSCORECODE&quot;;
+%EM_COPYFILE(infref=_scrcd, outfref=_out);
+filename _scrcd;
+filename _out;
+ 
+*** Assess the model created by the score code;
+%EM_MODEL(
+    TARGET= %EM_TARGET,
+    ASSESS= Y,
+    CLASSIFICATION= Y,
+    DECSCORECODE= N,
+    FITSTATISTICS= Y,
+    RESIDUALS= Y
+);
+ 
+ 
+]]>
+</Data>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMSAMP.IDS.CLASS" COMPONENT="DataSource" ID="Ids" X="78" Y="66" DESCRIPTION="Fisher-Anderson Iris" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="SAMPLE" TOOLPREFIX="Ids">
+<PROPERTIES Component="DataSource" Description="All: Fisher-Anderson Iris Data" Role="TRAIN" Library="SAMPSIO" Table="DMAIRIS" ForceRun="N" ComputeStatistics="N" DataSource="" DataSelection="USERTABLE" NewTable="SAMPSIO.DMAIRIS" OutputType="VIEW" MetaAdvisor="BASIC" ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20" ApplyMaxPercentMissing="Y" MaxPercentMissing="50" MaxClassLevels="20" IdentifyEmptyColumns="Y" VariableValidation="STRICT" NewVariableRole="REJECT" Sample="D" SampleSizeType="PERCENT" SampleSizePercent="20" SampleSizeObs="10000" DBPassThrough="Y" NObs="150" NCols="5" NBytes="66560" Segment="" ApplyMaxClassLevels="Y" DropMapVariables="N">
+<EmVariableAttributes>
+<DELTA Variable="species" AttributeName="ROLE" AttributeValue="TARGET"/>
+</EmVariableAttributes>
+<EmTargetAttributes>
+<species>
+<DecData Table="EMWS2.Ids_species_DD">
+<Data>
+<Obs SPECIES="VIRGINICA" COUNT="50" DATAPRIOR="0.3333333333" TRAINPRIOR="0.3333333333" DECPRIOR="." DECISION1="1" DECISION2="0" DECISION3="0"/>
+<Obs SPECIES="VERSICOLOR" COUNT="50" DATAPRIOR="0.3333333333" TRAINPRIOR="0.3333333333" DECPRIOR="." DECISION1="0" DECISION2="1" DECISION3="0"/>
+<Obs SPECIES="SETOSA" COUNT="50" DATAPRIOR="0.3333333333" TRAINPRIOR="0.3333333333" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="1"/>
+</Data>
+<Metadata>
+<Variable NAME="species" LABEL="" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="COUNT" LABEL="Level Counts" LENGTH="8" FORMAT="10." TYPE="N"/>
+<Variable NAME="DATAPRIOR" LABEL="Data Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="TRAINPRIOR" LABEL="Training Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECPRIOR" LABEL="Decision Priors" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION1" LABEL="VIRGINICA" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION2" LABEL="VERSICOLOR" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION3" LABEL="SETOSA" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS2.Ids_species_DM">
+<Data>
+<Obs _TYPE_="MATRIX" VARIABLE="" LABEL="" LEVEL="PROFIT" EVENT="" ORDER="" FORMAT="" TYPE="" COST="" USE="N"/>
+<Obs _TYPE_="TARGET" VARIABLE="species" LABEL="" LEVEL="NOMINAL" EVENT="VIRGINICA" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION1" LABEL="VIRGINICA" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION2" LABEL="VERSICOLOR" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION3" LABEL="SETOSA" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DATAPRIOR" VARIABLE="DATAPRIOR" LABEL="Data Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="TRAINPRIOR" VARIABLE="TRAINPRIOR" LABEL="Training Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="DECPRIOR" VARIABLE="DECPRIOR" LABEL="Decision Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_speciesvirginica" LABEL="Predicted: species=virginica" LEVEL="VIRGINICA" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_speciesvirginica" LABEL="Residual: species=virginica" LEVEL="VIRGINICA" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_speciesversicolor" LABEL="Predicted: species=versicolor" LEVEL="VERSICOLOR" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_speciesversicolor" LABEL="Residual: species=versicolor" LEVEL="VERSICOLOR" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_speciessetosa" LABEL="Predicted: species=setosa" LEVEL="SETOSA" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_speciessetosa" LABEL="Residual: species=setosa" LEVEL="SETOSA" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="FROM" VARIABLE="F_species" LABEL="From: species" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+<Obs _TYPE_="INTO" VARIABLE="I_species" LABEL="Into: species" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+</Data>
+<Metadata>
+<Variable NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="EVENT" LABEL="Target Event" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="ORDER" LABEL="Order" LENGTH="10" FORMAT="" TYPE="C"/>
+<Variable NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</species>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+</NODES>
+<CONNECTIONS>
+<CONNECTION FROM="Ids" TO="EMCODE"/>
+</CONNECTIONS>
+<NOTES>
+<DATA><![CDATA[
+
+
+
+]]>
+</DATA>
+</NOTES>
+</Workspace>
+</_ROOT_>
