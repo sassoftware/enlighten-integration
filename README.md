@@ -7,7 +7,4 @@ popular open source analytics technologies like Python and R.
 See individual subdirectories for specific examples and instructions. 
 
 Contributors include:
-Patrick Hall
-Radhikha Myneni
-Ruiwen Zhang
-Tim Haley
+Patrick Hall, Radhikha Myneni, Ruiwen Zhang, and Tim Haley
