@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?><_ROOT_ EMVERSION="14.1" ORIENTATION="HORIZONTAL">
+<Workspace>
+<NODES>
+<NODE CLASS="SASHELP.EMCORE.EMCODETOOL.CLASS" COMPONENT="SASCode" ID="EMCODE" X="224" Y="150" DESCRIPTION="Subset Data to digits 1 &amp; 7" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="UTILITY" TOOLPREFIX="EMCODE">
+<PROPERTIES UsePriors="Y" ToolType="UTILITY" DataNeeded="N" PublishCode="PUBLISH" ScoreCodeFormat="DATASTEP" MetaAdvisor="BASIC" ForceRun="N" RunAction="Train" Component="SASCode">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data><![CDATA[
+data &amp;EM_EXPORT_TRAIN;
+	set &amp;EM_IMPORT_DATA;
+	if label=1 or label=7 then output;
+run;
+]]>
+</Data>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="EMOPEN" ID="EMOPEN" X="378" Y="76" DESCRIPTION="DeepLearning w/ Validation" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="UTIL" TOOLPREFIX="EMOPEN">
+<PROPERTIES Location="CATALOG" Catalog="Sashelp.Emutil.Em_open.SOURCE" TRAINMODE="SUPERVISED" LANGUAGE="R" R_OUTPUT="MERGE" ForceRun="N" RunAction="Train" Component="EMOPEN" EDITOR="">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes>
+<label>
+<DecData Table="EMWS2.EMOPEN_label_DD">
+<Data>
+<Obs LABEL="9" COUNT="2932" DATAPRIOR="0.0997142857" TRAINPRIOR="0.0997448546" DECPRIOR="." DECISION1="1" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="8" COUNT="2843" DATAPRIOR="0.0967380952" TRAINPRIOR="0.0967171288" DECPRIOR="." DECISION1="0" DECISION2="1" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="7" COUNT="3080" DATAPRIOR="0.1047857143" TRAINPRIOR="0.1047797244" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="1" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="6" COUNT="2895" DATAPRIOR="0.0985" TRAINPRIOR="0.0984861371" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="1" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="5" COUNT="2657" DATAPRIOR="0.0903571429" TRAINPRIOR="0.090389522" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="1" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="4" COUNT="2849" DATAPRIOR="0.096952381" TRAINPRIOR="0.0969212451" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="1" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="3" COUNT="3046" DATAPRIOR="0.1035952381" TRAINPRIOR="0.1036230651" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="1" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="2" COUNT="2924" DATAPRIOR="0.099452381" TRAINPRIOR="0.0994726994" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="1" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="1" COUNT="3278" DATAPRIOR="0.1115238095" TRAINPRIOR="0.1115155639" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="1" DECISION10="0"/>
+<Obs LABEL="0" COUNT="2891" DATAPRIOR="0.0983809524" TRAINPRIOR="0.0983500595" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="1"/>
+</Data>
+<Metadata>
+<Variable NAME="label" LABEL="" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="COUNT" LABEL="Level Counts" LENGTH="8" FORMAT="10." TYPE="N"/>
+<Variable NAME="DATAPRIOR" LABEL="Data Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="TRAINPRIOR" LABEL="Training Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECPRIOR" LABEL="Decision Priors" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION1" LABEL="9" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION2" LABEL="8" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION3" LABEL="7" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION4" LABEL="6" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION5" LABEL="5" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION6" LABEL="4" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION7" LABEL="3" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION8" LABEL="2" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION9" LABEL="1" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION10" LABEL="0" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS2.EMOPEN_label_DM">
+<Data>
+<Obs _TYPE_="MATRIX" VARIABLE="" LABEL="" LEVEL="PROFIT" EVENT="" ORDER="" FORMAT="" TYPE="" COST="" USE="N"/>
+<Obs _TYPE_="TARGET" VARIABLE="label" LABEL="" LEVEL="NOMINAL" EVENT="9" ORDER="" FORMAT="BEST12.0" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION1" LABEL="9" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION2" LABEL="8" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION3" LABEL="7" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION4" LABEL="6" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION5" LABEL="5" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION6" LABEL="4" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION7" LABEL="3" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION8" LABEL="2" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION9" LABEL="1" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION10" LABEL="0" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DATAPRIOR" VARIABLE="DATAPRIOR" LABEL="Data Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="TRAINPRIOR" VARIABLE="TRAINPRIOR" LABEL="Training Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="DECPRIOR" VARIABLE="DECPRIOR" LABEL="Decision Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label9" LABEL="Predicted: label=9" LEVEL="9" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label9" LABEL="Residual: label=9" LEVEL="9" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label8" LABEL="Predicted: label=8" LEVEL="8" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label8" LABEL="Residual: label=8" LEVEL="8" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label7" LABEL="Predicted: label=7" LEVEL="7" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label7" LABEL="Residual: label=7" LEVEL="7" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label6" LABEL="Predicted: label=6" LEVEL="6" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label6" LABEL="Residual: label=6" LEVEL="6" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label5" LABEL="Predicted: label=5" LEVEL="5" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label5" LABEL="Residual: label=5" LEVEL="5" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label4" LABEL="Predicted: label=4" LEVEL="4" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label4" LABEL="Residual: label=4" LEVEL="4" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label3" LABEL="Predicted: label=3" LEVEL="3" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label3" LABEL="Residual: label=3" LEVEL="3" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label2" LABEL="Predicted: label=2" LEVEL="2" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label2" LABEL="Residual: label=2" LEVEL="2" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label1" LABEL="Predicted: label=1" LEVEL="1" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label1" LABEL="Residual: label=1" LEVEL="1" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label0" LABEL="Predicted: label=0" LEVEL="0" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label0" LABEL="Residual: label=0" LEVEL="0" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="FROM" VARIABLE="F_label" LABEL="From: label" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+<Obs _TYPE_="INTO" VARIABLE="I_label" LABEL="Into: label" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+</Data>
+<Metadata>
+<Variable NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="EVENT" LABEL="Target Event" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="ORDER" LABEL="Order" LENGTH="10" FORMAT="" TYPE="C"/>
+<Variable NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</label>
+</EmTargetAttributes>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<SUBMIT Type="EXTERNAL" Extension="txt">
+<Data><![CDATA[
+library(h2o)
+localh2o &lt;- h2o.init()
+
+cat(&quot;H2O Initialization Complete: &quot;, as.character(Sys.time()), &quot;\n&quot;)
+
+mnist_train.hex &lt;- as.h2o(&amp;EMR_IMPORT_DATA)
+mnist_valid.hex &lt;- as.h2o(&amp;EMR_IMPORT_VALIDATE)
+
+cat(&quot;Before Deep Learning: &quot;, as.character(Sys.time()), &quot;\n&quot;)
+
+&amp;EMR_MODEL &lt;- h2o.deeplearning(
+  training_frame=mnist_train.hex, 
+  validation_frame=mnist_valid.hex,
+  x=1:729, 
+  y=&quot;&amp;EMR_CLASS_TARGET&quot;, 
+  hidden=c(500,200,50), 
+  input_dropout_ratio=0.1, 
+  activation=&quot;RectifierWithDropout&quot;
+)
+
+cat(&quot;After Deep Learning: &quot;, as.character(Sys.time()), &quot;\n&quot;)
+
+train_pred.hex &lt;- h2o.predict(object=&amp;EMR_MODEL, newdata=mnist_train.hex)
+valid_pred.hex &lt;- h2o.predict(object=&amp;EMR_MODEL, newdata=mnist_valid.hex)
+
+cat(&quot;After Scoring Training &amp; Validation: &quot;, as.character(Sys.time()), &quot;\n&quot;)
+
+&amp;EMR_EXPORT_TRAIN &lt;- as.data.frame(train_pred.hex)
+&amp;EMR_EXPORT_VALIDATE &lt;- as.data.frame(valid_pred.hex)
+
+&amp;EMR_EXPORT_TRAIN[1:5,]
+]]>
+</Data>
+</SUBMIT>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="EMOPEN" ID="EMOPEN2" X="385" Y="150" DESCRIPTION="SuperLearner w/ 5 fold" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="UTIL" TOOLPREFIX="EMOPEN">
+<PROPERTIES Location="CATALOG" Catalog="Sashelp.Emutil.Em_open.SOURCE" TRAINMODE="SUPERVISED" LANGUAGE="R" R_OUTPUT="MERGE" ForceRun="N" RunAction="Train" Component="EMOPEN" EDITOR="">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes>
+<label>
+<DecData Table="EMWS2.EMOPEN2_label_DD">
+<Data>
+<Obs LABEL="7" COUNT="4401" DATAPRIOR="0.4844248762" TRAINPRIOR="0.4844248762" DECPRIOR="." DECISION1="1" DECISION2="0"/>
+<Obs LABEL="1" COUNT="4684" DATAPRIOR="0.5155751238" TRAINPRIOR="0.5155751238" DECPRIOR="." DECISION1="0" DECISION2="1"/>
+</Data>
+<Metadata>
+<Variable NAME="label" LABEL="" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="COUNT" LABEL="Level Counts" LENGTH="8" FORMAT="10." TYPE="N"/>
+<Variable NAME="DATAPRIOR" LABEL="Data Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="TRAINPRIOR" LABEL="Training Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECPRIOR" LABEL="Decision Priors" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION1" LABEL="7" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION2" LABEL="1" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS2.EMOPEN2_label_DM">
+<Data>
+<Obs _TYPE_="MATRIX" VARIABLE="" LABEL="" LEVEL="PROFIT" EVENT="" ORDER="" FORMAT="" TYPE="" COST="" USE="N"/>
+<Obs _TYPE_="TARGET" VARIABLE="label" LABEL="" LEVEL="NOMINAL" EVENT="7" ORDER="" FORMAT="BEST12.0" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION1" LABEL="7" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION2" LABEL="1" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DATAPRIOR" VARIABLE="DATAPRIOR" LABEL="Data Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="TRAINPRIOR" VARIABLE="TRAINPRIOR" LABEL="Training Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="DECPRIOR" VARIABLE="DECPRIOR" LABEL="Decision Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label7" LABEL="Predicted: label=7" LEVEL="7" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label7" LABEL="Residual: label=7" LEVEL="7" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label1" LABEL="Predicted: label=1" LEVEL="1" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label1" LABEL="Residual: label=1" LEVEL="1" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="FROM" VARIABLE="F_label" LABEL="From: label" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+<Obs _TYPE_="INTO" VARIABLE="I_label" LABEL="Into: label" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+</Data>
+<Metadata>
+<Variable NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="EVENT" LABEL="Target Event" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="ORDER" LABEL="Order" LENGTH="10" FORMAT="" TYPE="C"/>
+<Variable NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</label>
+</EmTargetAttributes>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<SUBMIT Type="EXTERNAL" Extension="txt">
+<Data><![CDATA[
+library(h2o)
+library(h2oEnsemble)
+localh2o &lt;- h2o.init()
+
+cat(&quot;H2O Initialization Complete: &quot;, as.character(Sys.time()), &quot;\n&quot;)
+
+mnist_train.hex &lt;- as.h2o(&amp;EMR_IMPORT_DATA)
+
+cat(&quot;Before Super Learner: &quot;, as.character(Sys.time()), &quot;\n&quot;)
+
+learner &lt;- c(&quot;h2o.glm.wrapper&quot;, &quot;h2o.randomForest.wrapper&quot;, &quot;h2o.gbm.wrapper&quot;, &quot;h2o.deeplearning.wrapper&quot;)
+metalearner &lt;- &quot;h2o.glm.wrapper&quot;
+
+&amp;EMR_MODEL &lt;- h2o.ensemble(
+  training_frame=mnist_train.hex,
+  x=1:729, 
+  y=&quot;&amp;EMR_CLASS_TARGET&quot;, 
+  family = &quot;binomial&quot;,
+  learner = learner,
+  metalearner = metalearner,
+  cvControl = list(V=5)
+)
+
+cat(&quot;After Super Learner: &quot;, as.character(Sys.time()), &quot;\n&quot;)
+
+train_pred.hex &lt;- predict(&amp;EMR_MODEL, mnist_train.hex)
+
+cat(&quot;After Scoring: &quot;, as.character(Sys.time()), &quot;\n&quot;)
+
+&amp;EMR_EXPORT_TRAIN &lt;- as.data.frame(train_pred.hex$pred)
+
+&amp;EMR_EXPORT_TRAIN[1:5,]
+]]>
+</Data>
+</SUBMIT>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMSAMP.IDS.CLASS" COMPONENT="DataSource" ID="Ids" X="61" Y="76" DESCRIPTION="TRAIN_NORMALIZED_PY" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="SAMPLE" TOOLPREFIX="Ids">
+<PROPERTIES DataSource="trainnormalizedpy" Scope="LOCAL" Role="RAW" Library="SRVDATA" Table="TRAIN_NORMALIZED_PY" NCols="730" NObs="42000" NBytes="258135040" Segment="" DataSourceRole="RAW" OutputType="VIEW" ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE" NewTable="" MetaAdvisor="BASIC" ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20" ApplyMaxPercentMissing="Y" MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20" IdentifyEmptyColumns="Y" VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y" DsId="trainnormalizedpy" DsSampleName="" DsSampleSizeType="" DsSampleSize="" DsCreatedBy="ramyne" DsCreateDate="1772032473.8" DsModifiedBy="ramyne" DsModifyDate="1772032473.9" DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT" SampleSizePercent="20" SampleSizeObs="10000" DBPassThrough="Y" RunAction="Train" Component="DataSource" Description="">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA Variable="label" AttributeName="ROLE" AttributeValue="TARGET"/>
+<DELTA Variable="label" AttributeName="LEVEL" AttributeValue="NOMINAL"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMASSMT.ASSESS.CLASS" COMPONENT="ModelCompare" ID="MdlComp" X="688" Y="77" DESCRIPTION="Model Comparison" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="ASSESS" TOOLPREFIX="MdlComp">
+<PROPERTIES NumberOfReportedLevels="1E-6" NormalizeReportingVariables="Y" DecileBin="20" LiftEpsilon="1E-6" ProfitEpsilon="1E-6" RoiEpsilon="1E-6" ScoreDistBin="20" RocChart="Y" RocEpsilon="0.01" AssessAllTargetLevels="N" SelectionData="DEFAULT" HPCriteria="DEFAULT" SelectionTable="TRAIN" SelectionCriteria="_MISC_" SelectionDepth="10" NumberofBins="20" RecomputeAssess="N" TargetName="label" ModelId="MdlImp" ModelDescription="Model Import" ModelCriteria="Train: Misclassification Rate" ForceRun="N" RunAction="Train" Component="ModelCompare" StatisticUsed="_MISC_" TargetLabel="">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMASSMT.ASSESS.CLASS" COMPONENT="ModelCompare" ID="MdlComp2" X="693" Y="151" DESCRIPTION="Model Comparison (2)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="ASSESS" TOOLPREFIX="MdlComp">
+<PROPERTIES NumberOfReportedLevels="1E-6" NormalizeReportingVariables="Y" DecileBin="20" LiftEpsilon="1E-6" ProfitEpsilon="1E-6" RoiEpsilon="1E-6" ScoreDistBin="20" RocChart="Y" RocEpsilon="0.01" AssessAllTargetLevels="N" SelectionData="DEFAULT" HPCriteria="DEFAULT" SelectionTable="TRAIN" SelectionCriteria="DEFAULT" SelectionDepth="10" NumberofBins="20" RecomputeAssess="N" TargetName="label" ModelId="MdlImp2" ModelDescription="Model Import (2)" ModelCriteria="Train: Misclassification Rate" ForceRun="N" RunAction="Train" Component="ModelCompare" StatisticUsed="_MISC_" TargetLabel="">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="ModelImport" ID="MdlImp" X="532" Y="77" DESCRIPTION="Model Import" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODEL" TOOLPREFIX="MdlImp">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMMODL.MODELIMPORT.SOURCE" ImportType="DATA" ApplyDecisions="N" ForceRun="N" RunAction="Train" Component="ModelImport" DataNeeded="Y" ModelName="" ModelPath="">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes>
+<label>
+<DecData Table="EMWS2.MdlImp_label_DD">
+<Data>
+<Obs LABEL="9" COUNT="2932" DATAPRIOR="0.0997448546" TRAINPRIOR="0.0997448546" DECPRIOR="." DECISION1="1" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="8" COUNT="2843" DATAPRIOR="0.0967171288" TRAINPRIOR="0.0967171288" DECPRIOR="." DECISION1="0" DECISION2="1" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="7" COUNT="3080" DATAPRIOR="0.1047797244" TRAINPRIOR="0.1047797244" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="1" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="6" COUNT="2895" DATAPRIOR="0.0984861371" TRAINPRIOR="0.0984861371" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="1" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="5" COUNT="2657" DATAPRIOR="0.090389522" TRAINPRIOR="0.090389522" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="1" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="4" COUNT="2849" DATAPRIOR="0.0969212451" TRAINPRIOR="0.0969212451" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="1" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="3" COUNT="3046" DATAPRIOR="0.1036230651" TRAINPRIOR="0.1036230651" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="1" DECISION8="0" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="2" COUNT="2924" DATAPRIOR="0.0994726994" TRAINPRIOR="0.0994726994" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="1" DECISION9="0" DECISION10="0"/>
+<Obs LABEL="1" COUNT="3278" DATAPRIOR="0.1115155639" TRAINPRIOR="0.1115155639" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="1" DECISION10="0"/>
+<Obs LABEL="0" COUNT="2891" DATAPRIOR="0.0983500595" TRAINPRIOR="0.0983500595" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="0" DECISION4="0" DECISION5="0" DECISION6="0" DECISION7="0" DECISION8="0" DECISION9="0" DECISION10="1"/>
+</Data>
+<Metadata>
+<Variable NAME="label" LABEL="" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="COUNT" LABEL="Level Counts" LENGTH="8" FORMAT="10." TYPE="N"/>
+<Variable NAME="DATAPRIOR" LABEL="Data Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="TRAINPRIOR" LABEL="Training Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECPRIOR" LABEL="Decision Priors" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION1" LABEL="9" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION2" LABEL="8" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION3" LABEL="7" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION4" LABEL="6" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION5" LABEL="5" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION6" LABEL="4" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION7" LABEL="3" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION8" LABEL="2" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION9" LABEL="1" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION10" LABEL="0" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS2.MdlImp_label_DM">
+<Data>
+<Obs _TYPE_="MATRIX" VARIABLE="" LABEL="" LEVEL="PROFIT" EVENT="" ORDER="" FORMAT="" TYPE="" COST="" USE="Y"/>
+<Obs _TYPE_="TARGET" VARIABLE="label" LABEL="" LEVEL="NOMINAL" EVENT="9" ORDER="" FORMAT="BEST12.0" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION1" LABEL="9" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION2" LABEL="8" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION3" LABEL="7" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION4" LABEL="6" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION5" LABEL="5" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION6" LABEL="4" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION7" LABEL="3" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION8" LABEL="2" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION9" LABEL="1" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION10" LABEL="0" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DATAPRIOR" VARIABLE="DATAPRIOR" LABEL="Data Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="TRAINPRIOR" VARIABLE="TRAINPRIOR" LABEL="Training Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="DECPRIOR" VARIABLE="DECPRIOR" LABEL="Decision Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label9" LABEL="Predicted: label=9" LEVEL="9" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label9" LABEL="Residual: label=9" LEVEL="9" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label8" LABEL="Predicted: label=8" LEVEL="8" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label8" LABEL="Residual: label=8" LEVEL="8" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label7" LABEL="Predicted: label=7" LEVEL="7" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label7" LABEL="Residual: label=7" LEVEL="7" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label6" LABEL="Predicted: label=6" LEVEL="6" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label6" LABEL="Residual: label=6" LEVEL="6" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label5" LABEL="Predicted: label=5" LEVEL="5" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label5" LABEL="Residual: label=5" LEVEL="5" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label4" LABEL="Predicted: label=4" LEVEL="4" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label4" LABEL="Residual: label=4" LEVEL="4" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label3" LABEL="Predicted: label=3" LEVEL="3" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label3" LABEL="Residual: label=3" LEVEL="3" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label2" LABEL="Predicted: label=2" LEVEL="2" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label2" LABEL="Residual: label=2" LEVEL="2" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label1" LABEL="Predicted: label=1" LEVEL="1" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label1" LABEL="Residual: label=1" LEVEL="1" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label0" LABEL="Predicted: label=0" LEVEL="0" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label0" LABEL="Residual: label=0" LEVEL="0" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="FROM" VARIABLE="F_label" LABEL="From: label" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+<Obs _TYPE_="INTO" VARIABLE="I_label" LABEL="Into: label" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+</Data>
+<Metadata>
+<Variable NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="EVENT" LABEL="Target Event" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="ORDER" LABEL="Order" LENGTH="10" FORMAT="" TYPE="C"/>
+<Variable NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</label>
+</EmTargetAttributes>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<MAPPING Type="DATA">
+<Data>
+<Obs LEVEL="0" PREDICTEDVAR="P_label0" MODELVAR="EMR_VAR1" PRIOR="." PREDICTEDLABEL="Predicted: label=0"/>
+<Obs LEVEL="1" PREDICTEDVAR="P_label1" MODELVAR="EMR_VAR2" PRIOR="." PREDICTEDLABEL="Predicted: label=1"/>
+<Obs LEVEL="2" PREDICTEDVAR="P_label2" MODELVAR="EMR_VAR3" PRIOR="." PREDICTEDLABEL="Predicted: label=2"/>
+<Obs LEVEL="3" PREDICTEDVAR="P_label3" MODELVAR="EMR_VAR4" PRIOR="." PREDICTEDLABEL="Predicted: label=3"/>
+<Obs LEVEL="4" PREDICTEDVAR="P_label4" MODELVAR="EMR_VAR5" PRIOR="." PREDICTEDLABEL="Predicted: label=4"/>
+<Obs LEVEL="5" PREDICTEDVAR="P_label5" MODELVAR="EMR_VAR6" PRIOR="." PREDICTEDLABEL="Predicted: label=5"/>
+<Obs LEVEL="6" PREDICTEDVAR="P_label6" MODELVAR="EMR_VAR7" PRIOR="." PREDICTEDLABEL="Predicted: label=6"/>
+<Obs LEVEL="7" PREDICTEDVAR="P_label7" MODELVAR="EMR_VAR8" PRIOR="." PREDICTEDLABEL="Predicted: label=7"/>
+<Obs LEVEL="8" PREDICTEDVAR="P_label8" MODELVAR="EMR_VAR9" PRIOR="." PREDICTEDLABEL="Predicted: label=8"/>
+<Obs LEVEL="9" PREDICTEDVAR="P_label9" MODELVAR="EMR_VAR10" PRIOR="." PREDICTEDLABEL="Predicted: label=9"/>
+</Data>
+<Metadata>
+<Variable NAME="level" LABEL="Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="PredictedVar" LABEL="Predicted Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="ModelVar" LABEL="Modeling Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="Prior" LABEL="Modeling Prior" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="PredictedLabel" LABEL="Predicted Variable Label" LENGTH="40" FORMAT="" TYPE="C"/>
+</Metadata>
+</MAPPING>
+<MODELINFO Type="DATA">
+<Data/>
+<Metadata/>
+</MODELINFO>
+<MODELINPUT Type="DATA">
+<Data/>
+<Metadata/>
+</MODELINPUT>
+<MODELOUTPUT Type="DATA">
+<Data/>
+<Metadata/>
+</MODELOUTPUT>
+<MODELSTAT Type="DATA">
+<Data/>
+<Metadata/>
+</MODELSTAT>
+<MODELTRAINING Type="DATA">
+<Data/>
+<Metadata/>
+</MODELTRAINING>
+<MODELTARGET Type="DATA">
+<Data/>
+<Metadata/>
+</MODELTARGET>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="ModelImport" ID="MdlImp2" X="538" Y="150" DESCRIPTION="Model Import (2)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODEL" TOOLPREFIX="MdlImp">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMMODL.MODELIMPORT.SOURCE" ImportType="DATA" ApplyDecisions="N" ForceRun="N" RunAction="Train" Component="ModelImport" DataNeeded="Y" ModelName="" ModelPath="">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes>
+<label>
+<DecData Table="EMWS2.MdlImp2_label_DD">
+<Data>
+<Obs LABEL="7" COUNT="4401" DATAPRIOR="0.4844248762" TRAINPRIOR="0.4844248762" DECPRIOR="." DECISION1="1" DECISION2="0"/>
+<Obs LABEL="1" COUNT="4684" DATAPRIOR="0.5155751238" TRAINPRIOR="0.5155751238" DECPRIOR="." DECISION1="0" DECISION2="1"/>
+</Data>
+<Metadata>
+<Variable NAME="label" LABEL="" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="COUNT" LABEL="Level Counts" LENGTH="8" FORMAT="10." TYPE="N"/>
+<Variable NAME="DATAPRIOR" LABEL="Data Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="TRAINPRIOR" LABEL="Training Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECPRIOR" LABEL="Decision Priors" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION1" LABEL="7" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION2" LABEL="1" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS2.MdlImp2_label_DM">
+<Data>
+<Obs _TYPE_="MATRIX" VARIABLE="" LABEL="" LEVEL="PROFIT" EVENT="" ORDER="" FORMAT="" TYPE="" COST="" USE="Y"/>
+<Obs _TYPE_="TARGET" VARIABLE="label" LABEL="" LEVEL="NOMINAL" EVENT="7" ORDER="" FORMAT="BEST12.0" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION1" LABEL="7" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION2" LABEL="1" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DATAPRIOR" VARIABLE="DATAPRIOR" LABEL="Data Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="TRAINPRIOR" VARIABLE="TRAINPRIOR" LABEL="Training Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="DECPRIOR" VARIABLE="DECPRIOR" LABEL="Decision Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label7" LABEL="Predicted: label=7" LEVEL="7" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label7" LABEL="Residual: label=7" LEVEL="7" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_label1" LABEL="Predicted: label=1" LEVEL="1" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_label1" LABEL="Residual: label=1" LEVEL="1" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="FROM" VARIABLE="F_label" LABEL="From: label" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+<Obs _TYPE_="INTO" VARIABLE="I_label" LABEL="Into: label" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+</Data>
+<Metadata>
+<Variable NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="EVENT" LABEL="Target Event" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="ORDER" LABEL="Order" LENGTH="10" FORMAT="" TYPE="C"/>
+<Variable NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</label>
+</EmTargetAttributes>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<MAPPING Type="DATA">
+<Data>
+<Obs LEVEL="1" PREDICTEDVAR="P_label1" MODELVAR="EMR_VAR1" PRIOR="." PREDICTEDLABEL="Predicted: label=1"/>
+<Obs LEVEL="7" PREDICTEDVAR="P_label7" MODELVAR="EMR_VAR2" PRIOR="." PREDICTEDLABEL="Predicted: label=7"/>
+</Data>
+<Metadata>
+<Variable NAME="level" LABEL="Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="PredictedVar" LABEL="Predicted Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="ModelVar" LABEL="Modeling Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="Prior" LABEL="Modeling Prior" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="PredictedLabel" LABEL="Predicted Variable Label" LENGTH="40" FORMAT="" TYPE="C"/>
+</Metadata>
+</MAPPING>
+<MODELINFO Type="DATA">
+<Data/>
+<Metadata/>
+</MODELINFO>
+<MODELINPUT Type="DATA">
+<Data/>
+<Metadata/>
+</MODELINPUT>
+<MODELOUTPUT Type="DATA">
+<Data/>
+<Metadata/>
+</MODELOUTPUT>
+<MODELSTAT Type="DATA">
+<Data/>
+<Metadata/>
+</MODELSTAT>
+<MODELTRAINING Type="DATA">
+<Data/>
+<Metadata/>
+</MODELTRAINING>
+<MODELTARGET Type="DATA">
+<Data/>
+<Metadata/>
+</MODELTARGET>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMSAMP.EMDPART.CLASS" COMPONENT="Partition" ID="Part" X="221" Y="76" DESCRIPTION="Data Partition" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="SAMPLE" TOOLPREFIX="Part">
+<PROPERTIES Method="DEFAULT" TrainPct="70" ValidatePct="30" TestPct="0" RandomSeed="12345" OutputType="DATA" IntervalDistribution="Y" ClassDistribution="Y" ForceRun="N" RunAction="Train" Component="Partition">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+</NODES>
+<CONNECTIONS>
+<CONNECTION FROM="Ids" TO="EMCODE"/>
+<CONNECTION FROM="Ids" TO="Part"/>
+<CONNECTION FROM="Part" TO="EMOPEN"/>
+<CONNECTION FROM="EMOPEN" TO="MdlImp"/>
+<CONNECTION FROM="MdlImp" TO="MdlComp"/>
+<CONNECTION FROM="EMCODE" TO="EMOPEN2"/>
+<CONNECTION FROM="EMOPEN2" TO="MdlImp2"/>
+<CONNECTION FROM="MdlImp2" TO="MdlComp2"/>
+</CONNECTIONS>
+<NOTES>
+<DATA><![CDATA[
+
+]]>
+</DATA>
+</NOTES>
+</Workspace>
+</_ROOT_>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><_ROOT_ EMVERSION="14.1" ORIENTATION="HORIZONTAL">
+<Workspace>
+<NODES>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="EMOPEN" ID="EMOPEN" X="297" Y="88" DESCRIPTION="PCA (h2o)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="UTIL" TOOLPREFIX="EMOPEN">
+<PROPERTIES Location="CATALOG" Catalog="Sashelp.Emutil.Em_open.SOURCE" TRAINMODE="UNSUPERVISED" LANGUAGE="R" R_OUTPUT="MERGE" ForceRun="N" RunAction="Train" Component="EMOPEN" EDITOR="">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<SUBMIT Type="EXTERNAL" Extension="txt">
+<Data><![CDATA[
+library(h2o)
+localh2o &lt;- h2o.init()
+
+# Convert R dataframe to h2o frame
+iris.hex &lt;- as.h2o(&amp;EMR_IMPORT_DATA)
+
+# Convert inputs with plus (used in R) to a character vector (used in h2o)
+xvec &lt;- (strsplit(as.vector(&quot;&amp;EMR_NUM_INPUT&quot;), split=' + ', fixed=T))[[1]]
+
+# Model
+&amp;EMR_MODEL &lt;- h2o.prcomp(training_frame=iris.hex, k=3, transform=&quot;STANDARDIZE&quot;, x=xvec)
+
+# Score input 
+pca_pred.hex &lt;- h2o.predict(object=&amp;EMR_MODEL, newdata=iris.hex)
+
+# Convert h2o frame to R dataframe
+&amp;EMR_EXPORT_TRAIN &lt;- as.data.frame(pca_pred.hex)
+]]>
+</Data>
+</SUBMIT>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMSAMP.IDS.CLASS" COMPONENT="DataSource" ID="Ids" X="126" Y="88" DESCRIPTION="Fisher's Iris Data (1936)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="SAMPLE" TOOLPREFIX="Ids">
+<PROPERTIES DataSource="fishersirisdata" Scope="LOCAL" Role="RAW" Library="SASHELP" Table="IRIS" NCols="5" NObs="150" NBytes="66560" Segment="" DataSourceRole="RAW" OutputType="VIEW" ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE" NewTable="" MetaAdvisor="BASIC" ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20" ApplyMaxPercentMissing="Y" MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20" IdentifyEmptyColumns="Y" VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y" DsId="fishersirisdata" DsSampleName="" DsSampleSizeType="" DsSampleSize="" DsCreatedBy="ramyne" DsCreateDate="1772032003.2" DsModifiedBy="ramyne" DsModifyDate="1772032003.2" DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT" SampleSizePercent="20" SampleSizeObs="10000" DBPassThrough="Y" RunAction="Train" Component="DataSource" Description="Fisher's Iris Data (1936)">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA Variable="Species" AttributeName="ROLE" AttributeValue="TARGET"/>
+</EmVariableAttributes>
+<EmTargetAttributes>
+<Species>
+<DecData Table="EMWS1.Ids_Species_DD">
+<Data>
+<Obs SPECIES="VIRGINICA" COUNT="50" DATAPRIOR="0.3333333333" TRAINPRIOR="0.3333333333" DECPRIOR="." DECISION1="1" DECISION2="0" DECISION3="0"/>
+<Obs SPECIES="VERSICOLOR" COUNT="50" DATAPRIOR="0.3333333333" TRAINPRIOR="0.3333333333" DECPRIOR="." DECISION1="0" DECISION2="1" DECISION3="0"/>
+<Obs SPECIES="SETOSA" COUNT="50" DATAPRIOR="0.3333333333" TRAINPRIOR="0.3333333333" DECPRIOR="." DECISION1="0" DECISION2="0" DECISION3="1"/>
+</Data>
+<Metadata>
+<Variable NAME="Species" LABEL="" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="COUNT" LABEL="Level Counts" LENGTH="8" FORMAT="10." TYPE="N"/>
+<Variable NAME="DATAPRIOR" LABEL="Data Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="TRAINPRIOR" LABEL="Training Proportions" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECPRIOR" LABEL="Decision Priors" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION1" LABEL="VIRGINICA" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION2" LABEL="VERSICOLOR" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="DECISION3" LABEL="SETOSA" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS1.Ids_Species_DM">
+<Data>
+<Obs _TYPE_="MATRIX" VARIABLE="" LABEL="" LEVEL="PROFIT" EVENT="" ORDER="" FORMAT="" TYPE="" COST="" USE="N"/>
+<Obs _TYPE_="TARGET" VARIABLE="Species" LABEL="Iris Species" LEVEL="NOMINAL" EVENT="VIRGINICA" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION1" LABEL="VIRGINICA" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION2" LABEL="VERSICOLOR" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DECISION" VARIABLE="DECISION3" LABEL="SETOSA" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="Y"/>
+<Obs _TYPE_="DATAPRIOR" VARIABLE="DATAPRIOR" LABEL="Data Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="TRAINPRIOR" VARIABLE="TRAINPRIOR" LABEL="Training Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="DECPRIOR" VARIABLE="DECPRIOR" LABEL="Decision Prior" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE="N"/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_SpeciesVirginica" LABEL="Predicted: Species=Virginica" LEVEL="VIRGINICA" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_SpeciesVirginica" LABEL="Residual: Species=Virginica" LEVEL="VIRGINICA" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_SpeciesVersicolor" LABEL="Predicted: Species=Versicolor" LEVEL="VERSICOLOR" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_SpeciesVersicolor" LABEL="Residual: Species=Versicolor" LEVEL="VERSICOLOR" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_SpeciesSetosa" LABEL="Predicted: Species=Setosa" LEVEL="SETOSA" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_SpeciesSetosa" LABEL="Residual: Species=Setosa" LEVEL="SETOSA" EVENT="" ORDER="" FORMAT="" TYPE="N" COST="" USE=""/>
+<Obs _TYPE_="FROM" VARIABLE="F_Species" LABEL="From: Species" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+<Obs _TYPE_="INTO" VARIABLE="I_Species" LABEL="Into: Species" LEVEL="" EVENT="" ORDER="" FORMAT="" TYPE="C" COST="" USE=""/>
+</Data>
+<Metadata>
+<Variable NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="EVENT" LABEL="Target Event" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="ORDER" LABEL="Order" LENGTH="10" FORMAT="" TYPE="C"/>
+<Variable NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+</Metadata>
+</DecMeta>
+</Species>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+</NODES>
+<CONNECTIONS>
+<CONNECTION FROM="Ids" TO="EMOPEN"/>
+</CONNECTIONS>
+<NOTES>
+<DATA><![CDATA[
+
+]]>
+</DATA>
+</NOTES>
+</Workspace>
+</_ROOT_>
