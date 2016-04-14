@@ -33,20 +33,20 @@ These materials accompany the SAS Communities tip: [How to execute a Python scri
   `$ javac src/dev/* -d bin`
 
 * Set the classpath in the main SASV9.cfg file by adding the following line: `-SET CLASSPATH "/path/to/enlighten-integration/SAS_EM_PythonIntegration/bin"`
-** The SASV9.cfg file is often located in a directory similar to C:\Program Files\SASHome\SASFoundation\9.4\nls\en.
-** For more information on steps 2 and 3, please see:
-** [http://support.sas.com/resources/papers/proceedings12/008-2012.pdf](http://support.sas.com/resources/papers/proceedings12/008-2012.pdf)
-** [https://github.com/sassoftware/enlighten-integration/blob/master/SAS_Base_OpenSrcIntegration/SAS_Base_OpenSrcIntegration.pdf](https://github.com/sassoftware/enlighten-integration/blob/master/SAS_Base_OpenSrcIntegration/SAS_Base_OpenSrcIntegration.pdf)
+  * The SASV9.cfg file is often located in a directory similar to C:\Program Files\SASHome\SASFoundation\9.4\nls\en.
+  * For more information on steps 2 and 3, please see:
+  * [http://support.sas.com/resources/papers/proceedings12/008-2012.pdf](http://support.sas.com/resources/papers/proceedings12/008-2012.pdf)
+  * [https://github.com/sassoftware/enlighten-integration/blob/master/SAS_Base_OpenSrcIntegration/SAS_Base_OpenSrcIntegration.pdf](https://github.com/sassoftware/enlighten-integration/blob/master/SAS_Base_OpenSrcIntegration/SAS_Base_OpenSrcIntegration.pdf)
 
 * Start a new Enterprise Miner project.
 
 * Import the python_integration.xml diagram by: File -> Import Diagram from XML ...
 
 * Set global constants in the project start up code.
-** Click on the name of the project in the top node of the project tree (near top left)
-** Click on the ellipses beside Project Start Code in the properties panel
-** Paste the content of the included startup.sas file into the code editor and set the global constants.
-** Click Ok.
+  * Click on the name of the project in the top node of the project tree (near top left)
+  * Click on the ellipses beside Project Start Code in the properties panel
+  * Paste the content of the included startup.sas file into the code editor and set the global constants.
+  * Click Ok.
 
 ```sas
   options linesize = MAX;
