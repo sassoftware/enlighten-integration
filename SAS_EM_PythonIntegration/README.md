@@ -16,43 +16,41 @@ limitations under the License.
 
 ******************************************************************************/
 
-## Python Integration Using the Base SAS Java Object in SAS Enterprise Miner
+## Python Integration Using the Base SAS&reg; Java Object in SAS&reg; Enterprise Miner&trade
 
 Code and materials for integrating Python in SAS Enterprise Miner using the Base SAS Java Object.
 
 These materials accompany the SAS Communities Tip [How to execute a Python script in SAS® Enterprise Miner™](https://communities.sas.com/t5/SAS-Communities-Library/Tip-How-to-execute-a-Python-script-in-SAS-Enterprise-Miner/tac-p/223765)
 
-===============
-
 ## Instructions
 
-1. Fork and clone OR download the enlighten-integration repository.
+* Fork and clone OR download the enlighten-integration repository.
 
-2. Compile the Java classes in enlighten-integration/SAS_EM_PythonIntegration/src with Java 7
+* Compile the Java classes in enlighten-integration/SAS_EM_PythonIntegration/src with Java 7
 
-`$ cd enlighten-apply/SAS_EM_PythonIntegration`
+  `$ cd enlighten-apply/SAS_EM_PythonIntegration`
 
-`$ javac src/dev/* -d bin`
+  `$ javac src/dev/* -d bin`
 
-3. Set the classpath in the main SASV9.cfg by adding the following line:
+* Set the classpath in the main SASV9.cfg by adding the following line:
 
-`-SET CLASSPATH "/path/to/enlighten-integration/SAS_EM_PythonIntegration/bin"`
+  `-SET CLASSPATH "/path/to/enlighten-integration/SAS_EM_PythonIntegration/bin"`
 
-The SASV9.cfg file is often located in a directory similar to C:\Program Files\SASHome\SASFoundation\9.4\nls\en.
+** The SASV9.cfg file is often located in a directory similar to C:\Program Files\SASHome\SASFoundation\9.4\nls\en.
 
-For more information on steps 2 and 3, please see:
-[http://support.sas.com/resources/papers/proceedings12/008-2012.pdf](http://support.sas.com/resources/papers/proceedings12/008-2012.pdf)
-[https://github.com/sassoftware/enlighten-integration/blob/master/SAS_Base_OpenSrcIntegration/SAS_Base_OpenSrcIntegration.pdf](https://github.com/sassoftware/enlighten-integration/blob/master/SAS_Base_OpenSrcIntegration/SAS_Base_OpenSrcIntegration.pdf)
+** For more information on steps 2 and 3, please see:
+*** [http://support.sas.com/resources/papers/proceedings12/008-2012.pdf](http://support.sas.com/resources/papers/proceedings12/008-2012.pdf)
+*** [https://github.com/sassoftware/enlighten-integration/blob/master/SAS_Base_OpenSrcIntegration/SAS_Base_OpenSrcIntegration.pdf](https://github.com/sassoftware/enlighten-integration/blob/master/SAS_Base_OpenSrcIntegration/SAS_Base_OpenSrcIntegration.pdf)
 
-4. Start a new Enterprise Miner project.
+* Start a new Enterprise Miner project.
 
-5. Import the python_integration.xml diagram by: File -> Import Diagram from XML ...
+* Import the python_integration.xml diagram by: File -> Import Diagram from XML ...
 
-6. Set global constants in the project start up code.
+* Set global constants in the project start up code.
 
-  1. Click on the name of the project in the top node of the project tree (near top left)
-  2. Click on the ellipses beside Project Start Code in the properties panel
-  3. Paste the content of the included startup.sas file into the code editor and set the global constants.
+** Click on the name of the project in the top node of the project tree (near top left)
+** Click on the ellipses beside Project Start Code in the properties panel
+** Paste the content of the included startup.sas file into the code editor and set the global constants.
 
 ```sas
   options linesize = MAX;
@@ -68,9 +66,9 @@ For more information on steps 2 and 3, please see:
 ```
   4. Click Ok.
 
-7. Open the SAS Code node code editor by clicking on the SAS Code node and then clicking the ellipses beside Code Editor in the properties panel. Ensure the contents match the included code_node.sas file.
+* Open the SAS Code node code editor by clicking on the SAS Code node and then clicking the ellipses beside Code Editor in the properties panel. Ensure the contents match the included code_node.sas file.
 
-8. Run the diagram and inspect the results. You should see that the Python script in the included em_digitsdata_forest.py file has been executed, training a random forest model. The results have been imported into the Enterprise Miner flow.
+* Run the diagram and inspect the results. You should see that the Python script in the included em_digitsdata_forest.py file has been executed, training a random forest model. The results have been imported into the Enterprise Miner flow.
 
 ## Testing
 
