@@ -38,7 +38,7 @@ The [Base SAS Java Object](http://support.sas.com/documentation/cdl/en/lrcon/680
 
 ![alt text](readme_pics/Slide1.png "SAS/IML Integration with R")
 
-[SAS/IML Integration with R](https://support.sas.com/documentation/cdl/en/imlug/68150/HTML/default/viewer.htm#imlug_r_toc.htm) enables data to be transferred between SAS and R and it enables calling statements from the R language from within a SAS session. One important consideration with R is its ability, much like SAS', to generate [Predictive Modeling Markup Langauge (PMML)](http://dmg.org/pmml/v4-2-1/GeneralStructure.html) to encapsulate the logic of predictive models in a portable format. The example materials in this repository use R to train models and PMML as a portable deployment mechanism. The Enterprise Miner Open Source Integration node is based the same technologies.
+[SAS/IML Integration with R](https://support.sas.com/documentation/cdl/en/imlug/68150/HTML/default/viewer.htm#imlug_r_toc.htm) enables data to be transferred between SAS and R and it enables calling statements from the R language from within a SAS session. One important consideration with R is its ability, much like SAS', to generate [Predictive Modeling Markup Langauge (PMML)](http://dmg.org/pmml/v4-2-1/GeneralStructure.html) to encapsulate the logic of predictive models in a portable format. The example materials in this repository use R to train models and PMML as a portable deployment mechanism. The Enterprise Miner Open Source Integration node is based on the same technologies.
 
 #### Using SAS/IML to call R and create PMML
 
