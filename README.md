@@ -55,3 +55,6 @@ The [Base SAS Java Object](http://support.sas.com/documentation/cdl/en/lrcon/680
 
 * [SAS Kernel for Jupyter Notebooks](https://github.com/sassoftware/sas_kernel)
 * [Calling SAS from R or Python using SAS&reg; BI Web Services](http://blogs.sas.com/content/subconsciousmusings/2015/10/13/how-analytical-web-services-can-help-scale-your-machine-learning/)
+* [The LUA Procedure](http://support.sas.com/documentation/cdl/en/proc/68954/HTML/default/viewer.htm#n1csk38ocks0rgn1rr8d302ofqgs.htm)
+* [The GROOVY Procedure](http://support.sas.com/documentation/cdl/en/proc/68954/HTML/default/viewer.htm#p1x8agymll9gten1ocziihptcjzj.htm)
+* [The JSON Procedure](http://support.sas.com/documentation/cdl/en/proc/68954/HTML/default/viewer.htm#p06hstivs0b3hsn1cb4zclxukkut.htm)
