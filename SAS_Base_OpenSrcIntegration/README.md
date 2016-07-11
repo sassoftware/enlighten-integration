@@ -24,9 +24,9 @@ Code and materials for integrating open source packages with SAS
 
 using the Base SAS Java Object.
 
-To accompany "Open Source Integration Using the Base SAS Java Object"
+To accompany "Open Source Integration Using the Base SAS Java Object":
 
-paper is provided (SAS_Base_OpenSrcIntegraion.pdf).
+https://support.sas.com/rnd/app/data-mining/enterprise-miner/pdfs/SAS_Base_OpenSrcIntegration.pdf
 
 
 
